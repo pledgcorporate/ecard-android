@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pledg</string>
+    <string name="purchase_success">Purchase success</string>
+    <string name="start_transaction"><u>Payer a plusieurs</u></string>
+    <string name="purchase_error">Purchase error</string>
+</resources>
