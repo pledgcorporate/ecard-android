@@ -12,7 +12,7 @@ class MainActivityViewModel : ViewModel() {
     private val URL = "https://ecard-front-mobile.herokuapp.com/purchase"
     private val embeded = "1"
     private val merchant_uid = "mer_8ec99f9a-f650-4893-a4a3-16f20e16bb66"
-    private val priceInCent = "30550"
+    private val priceInCent = "3500"
     private val currency: String = "EUR"
     private val customerEmail = "sales@pledge.co"
     private val emal: String = "lukasz@lukas.com"
