@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pledgtest.model.Response
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class MainActivityViewModel : ViewModel() {
 
@@ -44,7 +45,7 @@ class MainActivityViewModel : ViewModel() {
         email.replace("@", "%40")
 
     fun onMessage(value: String) {
-        val moshi = Moshi.Builder().build()
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         val adpater = moshi.adapter(Response::class.java)
         val response = adpater.fromJson(value)
         response?.let {

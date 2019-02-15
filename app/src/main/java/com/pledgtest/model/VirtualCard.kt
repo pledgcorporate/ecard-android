@@ -6,7 +6,7 @@ class VirtualCard {
     @Json(name = "account")
     lateinit var account: Account
     @Json(name = "amount")
-    var amount: Int? = null
+    var amount: Float? = null
     @Json(name = "amount_cents")
     var amountCents: Int? = null
     @Json(name = "card_number")

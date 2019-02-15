@@ -1,12 +1,11 @@
 package com.pledgtest.model
 
 import com.squareup.moshi.Json
-
 class Response {
     @Json(name = "name")
-    lateinit var name: String
+    var name: String? = null
     @Json(name = "payload")
-    lateinit var payload: Payload
+    var payload: Payload? = null
 
     override fun toString(): String {
         return "Response(name=$name, payload=$payload)"
