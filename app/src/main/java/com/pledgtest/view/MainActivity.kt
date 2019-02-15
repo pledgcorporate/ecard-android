@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.pledgtest.R
 import com.pledgtest.databinding.ActivityMainBinding
 import com.pledgtest.model.Response
 import com.pledgtest.viewmodel.MainActivityViewModel
@@ -18,6 +17,8 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
+import android.content.Intent
+import com.pledgtest.R
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +52,15 @@ class MainActivity : AppCompatActivity() {
         web.setDownloadListener{ _, _, _, _, _ ->
         }
         web.webChromeClient = object : WebChromeClient() {}
+        web.webViewClient=object:WebViewClient(){
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                if(request!!.url.toString().endsWith("downloadCGU-en")){
+                    return startWebPageWithPdf(request)
+                }
+                view!!.loadUrl(request!!.url.toString())
+                return true
+            }
+        }
         val settings = web.settings
         settings.allowUniversalAccessFromFileURLs = true
         settings.allowContentAccess = true
@@ -73,21 +83,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun startWebPageWithPdf(request: WebResourceRequest?): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, request!!.url)
+        startActivity(intent)
+        return true
+    }
+
 
     private fun showSuccessDialog(it: Response) {
+        it.payload?.let {
         AlertDialog.Builder(this)
             .setTitle(R.string.purchase_success)
             .setMessage(
-                "uid: ${it.payload.virtualCard.uid}\n" +
-                        "purchase.uid:${it.payload.virtualCard.purchase.uid}\n" +
-                        "account.uid:${it.payload.virtualCard.account.uid}\n" +
-                        "state:${it.payload.virtualCard.state}\n" +
-                        "ammount:${it.payload.virtualCard.amount}\n" +
-                        "cardNumber:${it.payload.virtualCard.cardNumber}"
+                "uid: ${it.virtualCard.uid}\n" +
+                        "purchase.uid:${it.virtualCard.purchase.uid}\n" +
+                        "account.uid:${it.virtualCard.account.uid}\n" +
+                        "state:${it.virtualCard.state}\n" +
+                        "ammount:${it.virtualCard.amount}\n" +
+                        "cardNumber:${it.virtualCard.cardNumber}"
             )
             .setNeutralButton(android.R.string.ok) { _, _ -> finish() }
             .create()
             .show()
+        }
     }
 
     private fun showErrorDialog() {
@@ -101,10 +119,10 @@ class MainActivity : AppCompatActivity() {
         @JavascriptInterface
         fun postMessage(value: String?) {
             handler.post {
+                Log.d(TAG, "postMessage $value")
                 if (value != null) {
                     viewModel.onMessage(value)
                 }
-                Log.d(TAG, "postMessage $value")
             }
         }
 
