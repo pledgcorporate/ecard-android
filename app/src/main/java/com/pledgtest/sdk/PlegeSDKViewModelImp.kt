@@ -56,7 +56,7 @@ class PlegeSDKViewModelImp : PlegeSDKViewModel, BaseObservable() {
         }
     }
 
-    override fun startTransaction(transaction: Transaction) {
+    fun startTransaction(transaction: Transaction) {
         this.transaction = transaction
         onActiveTransaction.value = true
     }

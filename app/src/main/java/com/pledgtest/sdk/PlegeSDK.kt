@@ -1,8 +1,8 @@
 package com.pledgtest.sdk
 
-import android.webkit.WebView
+import com.pledgtest.model.Transaction
 
 interface PlegeSDK{
     val viewModel: PlegeSDKViewModel
-    fun settingWebView(view :WebView)
+    fun startTransaction(transaction: Transaction)
 }

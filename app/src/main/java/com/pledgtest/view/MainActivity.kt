@@ -24,21 +24,23 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        plegeSDK = PlegeSDKImp(this)
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
-        plegeSDK.viewModel.onActiveTransaction.observeForever {
-            it?.let {
-                plegeSDK.settingWebView(web)
-                listenToTransaction(plegeSDK.viewModel)
-            }
-        }
-        viewModel.plegeViewModel = plegeSDK.viewModel
-
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 viewModel = this@MainActivity.viewModel
                 setLifecycleOwner(this@MainActivity)
             }
+        settingPlegeSDK()
+    }
+
+    private fun settingPlegeSDK() {
+        plegeSDK = PlegeSDKImp(this, web)
+        plegeSDK.viewModel.onActiveTransaction.observeForever {
+            it?.let {
+                listenToTransaction(plegeSDK.viewModel)
+            }
+        }
+        viewModel.plegeSDK = plegeSDK
     }
 
     private fun listenToTransaction(viewModel: PlegeSDKViewModel) {

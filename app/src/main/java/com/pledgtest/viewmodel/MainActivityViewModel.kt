@@ -2,10 +2,10 @@ package com.pledgtest.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.pledgtest.model.Transaction
-import com.pledgtest.sdk.PlegeSDKViewModel
+import com.pledgtest.sdk.PlegeSDK
 
 class MainActivityViewModel : ViewModel() {
-    lateinit var plegeViewModel: PlegeSDKViewModel
+    lateinit var plegeSDK: PlegeSDK
     val transaction = Transaction(
         "mer_8ec99f9a-f650-4893-a4a3-16f20e16bb66",
         3500,
@@ -19,6 +19,6 @@ class MainActivityViewModel : ViewModel() {
     )
 
     fun onUrlClick() {
-        plegeViewModel.startTransaction(transaction)
+        plegeSDK.startTransaction(transaction)
     }
 }

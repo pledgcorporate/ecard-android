@@ -5,16 +5,21 @@ import android.content.Intent
 import android.os.Handler
 import android.util.Log
 import android.webkit.*
+import com.pledgtest.model.Transaction
 
-class PlegeSDKImp(val activit: Activity) : PlegeSDK {
+class PlegeSDKImp(val activit: Activity,val web: WebView) : PlegeSDK {
+
     private val TAG = "PlegeSDK"
     override val viewModel: PlegeSDKViewModelImp = PlegeSDKViewModelImp()
     private val postMessage = PostMessage()
-    private lateinit var web: WebView
     private var handler: Handler = Handler(activit.mainLooper)
 
-    override fun settingWebView(web: WebView) {
-        this.web = web
+    override fun startTransaction(transaction: Transaction) {
+        viewModel.startTransaction(transaction)
+        settingWebView()
+    }
+
+    private fun settingWebView() {
         web.addJavascriptInterface(postMessage, "webkit")
         web.setDownloadListener { _, _, _, _, _ ->
         }
