@@ -7,10 +7,10 @@ import android.util.Log
 import android.webkit.*
 import com.pledgtest.model.Transaction
 
-class PlegeSDKImp(val activit: Activity,val web: WebView) : PlegeSDK {
+class PledgSDKImp(val activit: Activity, val web: WebView) : PledgSDK {
 
-    private val TAG = "PlegeSDK"
-    override val viewModel: PlegeSDKViewModelImp = PlegeSDKViewModelImp()
+    private val TAG = "PledgSDK"
+    override val viewModel: PledgSDKViewModelImp = PledgSDKViewModelImp()
     private val postMessage = PostMessage()
     private var handler: Handler = Handler(activit.mainLooper)
 

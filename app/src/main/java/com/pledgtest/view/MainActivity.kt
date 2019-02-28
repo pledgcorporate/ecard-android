@@ -11,15 +11,15 @@ import com.pledgtest.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import com.pledgtest.R
 import com.pledgtest.databinding.ActivityMainBinding
-import com.pledgtest.sdk.PlegeSDK
-import com.pledgtest.sdk.PlegeSDKImp
-import com.pledgtest.sdk.PlegeSDKViewModel
+import com.pledgtest.sdk.PledgSDK
+import com.pledgtest.sdk.PledgSDKImp
+import com.pledgtest.sdk.PledgSDKViewModel
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainActivityViewModel
-    private lateinit var plegeSDK: PlegeSDK
+    private lateinit var pledgSDK: PledgSDK
 
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,20 +30,20 @@ class MainActivity : AppCompatActivity() {
                 viewModel = this@MainActivity.viewModel
                 setLifecycleOwner(this@MainActivity)
             }
-        settingPlegeSDK()
+        settingPledgDK()
     }
 
-    private fun settingPlegeSDK() {
-        plegeSDK = PlegeSDKImp(this, web)
-        plegeSDK.viewModel.onActiveTransaction.observeForever {
+    private fun settingPledgDK() {
+        pledgSDK = PledgSDKImp(this, web)
+        pledgSDK.viewModel.onActiveTransaction.observeForever {
             it?.let {
-                listenToTransaction(plegeSDK.viewModel)
+                listenToTransaction(pledgSDK.viewModel)
             }
         }
-        viewModel.plegeSDK = plegeSDK
+        viewModel.pledgSDK = pledgSDK
     }
 
-    private fun listenToTransaction(viewModel: PlegeSDKViewModel) {
+    private fun listenToTransaction(viewModel: PledgSDKViewModel) {
         viewModel.onPurchaseSuccess.observeForever {
             showSuccessDialog(it)
         }

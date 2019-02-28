@@ -4,7 +4,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
 import com.pledgtest.model.Response
 
-interface PlegeSDKViewModel : Observable {
+interface PledgSDKViewModel : Observable {
     val onActiveTransaction: LiveData<Boolean>
     val onPurchaseSuccess: LiveData<Response>
     val onPurchaseError: LiveData<Boolean>
