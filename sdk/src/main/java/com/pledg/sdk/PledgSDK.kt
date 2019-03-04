@@ -1,6 +1,7 @@
-package com.pledgtest.sdk
+package com.pledg.sdk
 
-import com.pledgtest.model.Transaction
+import com.pledg.sdk.model.Transaction
+
 
 interface PledgSDK{
     val viewModel: PledgSDKViewModel

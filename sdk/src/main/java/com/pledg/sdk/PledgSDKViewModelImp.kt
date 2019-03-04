@@ -1,13 +1,13 @@
-package com.pledgtest.sdk
+package com.pledg.sdk
 
 import androidx.databinding.BaseObservable
 import androidx.lifecycle.MutableLiveData
-import com.pledgtest.model.Response
-import com.pledgtest.model.Transaction
+import com.pledg.sdk.model.Response
+import com.pledg.sdk.model.Transaction
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-class PledgSDKViewModelImp : PledgSDKViewModel, BaseObservable() {
+internal class PledgSDKViewModelImp : PledgSDKViewModel, BaseObservable() {
 
 
     private val URL = "https://ecard-front-mobile.herokuapp.com/purchase"

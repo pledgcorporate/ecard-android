@@ -6,14 +6,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.pledgtest.model.Response
+import com.pledg.sdk.model.Response
 import com.pledgtest.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import com.pledgtest.R
 import com.pledgtest.databinding.ActivityMainBinding
-import com.pledgtest.sdk.PledgSDK
-import com.pledgtest.sdk.PledgSDKImp
-import com.pledgtest.sdk.PledgSDKViewModel
+import com.pledg.sdk.PledgSDK
+import com.pledg.sdk.PledgSDKViewModel
+import com.pledg.sdk.createPlegSDK
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun settingPledgDK() {
-        pledgSDK = PledgSDKImp(this, web)
+        pledgSDK = createPlegSDK(this, web)
         pledgSDK.viewModel.onActiveTransaction.observeForever {
             it?.let {
                 listenToTransaction(pledgSDK.viewModel)
@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
                     "uid: ${it.virtualCard.uid}\n" +
                             "purchase.uid:${it.virtualCard.purchase.uid}\n" +
                             "account.uid:${it.virtualCard.account.uid}\n" +
-                            "state:${it.virtualCard.state}\n" +
                             "ammount:${it.virtualCard.amount}\n" +
                             "cardNumber:${it.virtualCard.cardNumber}"
                 )

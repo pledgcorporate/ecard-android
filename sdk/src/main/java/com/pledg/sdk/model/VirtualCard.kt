@@ -1,4 +1,4 @@
-package com.pledgtest.model
+package com.pledg.sdk.model
 
 import com.squareup.moshi.Json
 
@@ -23,8 +23,6 @@ class VirtualCard {
     var expirationDate: String? = null
     @Json(name = "purchase")
     lateinit var purchase: Purchase
-    @Json(name = "state")
-    lateinit var state: String
     @Json(name = "uid")
     var uid: String? = null
     @Json(name = "updated")
@@ -37,7 +35,7 @@ class VirtualCard {
     var expiryYear: String? = null
 
     override fun toString(): String {
-        return "VirtualCard(account=$account, amount=$amount, amountCents=$amountCents, cardNumber=$cardNumber, created=$created, currency=$currency, currencySymbol=$currencySymbol, cvc=$cvc, expirationDate=$expirationDate, purchase=$purchase, state=$state, uid=$uid, updated=$updated, vcpReference=$vcpReference, expiryMonth=$expiryMonth, expiryYear=$expiryYear)"
+        return "VirtualCard(account=$account, amount=$amount, amountCents=$amountCents, cardNumber=$cardNumber, created=$created, currency=$currency, currencySymbol=$currencySymbol, cvc=$cvc, expirationDate=$expirationDate, purchase=$purchase, uid=$uid, updated=$updated, vcpReference=$vcpReference, expiryMonth=$expiryMonth, expiryYear=$expiryYear)"
     }
 
 }

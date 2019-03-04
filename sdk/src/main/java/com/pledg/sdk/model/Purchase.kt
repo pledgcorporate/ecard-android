@@ -1,13 +1,13 @@
-package com.pledgtest.model
+package com.pledg.sdk.model
 
 import com.squareup.moshi.Json
 
-class Account {
+class Purchase {
     @Json(name = "uid")
     var uid: String? = null
 
     override fun toString(): String {
-        return "Account(uid=$uid)"
+        return "Purchase(uid=$uid)"
     }
 
 }

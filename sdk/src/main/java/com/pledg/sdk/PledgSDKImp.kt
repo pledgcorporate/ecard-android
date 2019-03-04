@@ -1,13 +1,13 @@
-package com.pledgtest.sdk
+package com.pledg.sdk
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Handler
 import android.util.Log
 import android.webkit.*
-import com.pledgtest.model.Transaction
+import com.pledg.sdk.model.Transaction
 
-class PledgSDKImp(val activit: Activity, val web: WebView) : PledgSDK {
+internal class PledgSDKImp(val activit: Activity, val web: WebView) : PledgSDK {
 
     private val TAG = "PledgSDK"
     override val viewModel: PledgSDKViewModelImp = PledgSDKViewModelImp()

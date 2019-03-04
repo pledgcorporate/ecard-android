@@ -1,4 +1,4 @@
-package com.pledgtest.model
+package com.pledg.sdk.model
 
 import com.squareup.moshi.Json
 

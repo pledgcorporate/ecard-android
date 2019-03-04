@@ -1,8 +1,8 @@
-package com.pledgtest.sdk
+package com.pledg.sdk
 
 import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
-import com.pledgtest.model.Response
+import com.pledg.sdk.model.Response
 
 interface PledgSDKViewModel : Observable {
     val onActiveTransaction: LiveData<Boolean>

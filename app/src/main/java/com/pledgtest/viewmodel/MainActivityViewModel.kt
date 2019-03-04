@@ -1,8 +1,8 @@
 package com.pledgtest.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.pledgtest.model.Transaction
-import com.pledgtest.sdk.PledgSDK
+import com.pledg.sdk.model.Transaction
+import com.pledg.sdk.PledgSDK
 
 class MainActivityViewModel : ViewModel() {
     lateinit var pledgSDK: PledgSDK
@@ -13,7 +13,7 @@ class MainActivityViewModel : ViewModel() {
         "sales@pledge.co",
         "lukasz@lukas.com",
         "en_GB",
-        "order_123",
+        "order_122",
         "STAY IN LONDON",
         "Fly + Hotel 2 nights (3 rooms)"
     )

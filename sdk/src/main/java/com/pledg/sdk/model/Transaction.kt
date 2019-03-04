@@ -1,4 +1,4 @@
-package com.pledgtest.model
+package com.pledg.sdk.model
 
 data class Transaction(
     val merchant_uid: String,
