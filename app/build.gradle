@@ -44,5 +44,5 @@ dependencies {
     // use -ktx for Kotlin
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
     implementation 'com.squareup.moshi:moshi-kotlin:1.8.0'
-    implementation project(':sdk')
+    implementation project(':pledg-sdk')
 }

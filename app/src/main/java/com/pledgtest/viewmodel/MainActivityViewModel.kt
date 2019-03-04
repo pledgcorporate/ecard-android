@@ -8,12 +8,12 @@ class MainActivityViewModel : ViewModel() {
     lateinit var pledgSDK: PledgSDK
     val transaction = Transaction(
         "mer_8ec99f9a-f650-4893-a4a3-16f20e16bb66",
-        3500,
+        350,
         "EUR",
         "sales@pledge.co",
         "lukasz@lukas.com",
         "en_GB",
-        "order_122",
+        "order_132",
         "STAY IN LONDON",
         "Fly + Hotel 2 nights (3 rooms)"
     )
