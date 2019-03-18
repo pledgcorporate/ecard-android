@@ -1,1 +1,1 @@
-include ':app', ':sdk', ':pledg-sdk'
+include ':app', ':pledg-sdk'
